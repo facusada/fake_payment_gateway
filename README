@@ -1,0 +1,74 @@
+Fake Payment Gateway
+
+A payment simulation system built with Django and Django REST Framework. This project allows you to simulate payment transactions and check the status of payments.
+
+Features
+
+	•	Simulate payments with different statuses (approved, rejected).
+	•	Query the status of a transaction by its ID.
+	•	SQLite database for transaction storage.
+
+Technologies
+
+	•	Django: Web framework.
+	•	Django REST Framework: Library for building APIs.
+	•	SQLite: Lightweight database for development.
+
+Installation
+
+Follow these steps to set up the project in your local environment.
+
+1. Clone the repository
+git clone https://github.com/yourusername/fake_payment_gateway.git
+cd fake_payment_gateway
+
+2.	Set Up the Virtual Environment
+python -m venv venv
+source venv/bin/activate
+
+3. Install dependencies
+pip install -r requirements.txt
+
+4. Apply Migrations
+python manage.py migrate
+
+5. Run the development server
+python manage.py runserver
+
+
+
+API Endpoints
+
+Simulate Payment
+
+	•	URL: /api/payments/process/
+	•	Method: POST
+	•	Request Body:
+    {
+        "amount": 100.0,
+        "currency": "USD",
+        "payment_method": "credit_card"
+    }
+    •	Response:
+    {
+        "transaction_id": "abc123",
+        "status": "approved",
+        "amount": 100.0,
+        "message": "Payment processed successfully!"
+    }
+
+
+
+
+Check Payment Status
+
+	•	URL: /status/<transaction_id>/
+	•	Method: GET
+	•	Response:
+    {
+        "transaction_id": "abc123",
+        "status": "approved",
+        "amount": 100.0,
+        "currency": "USD",
+        "message": "Payment status is approved"
+    }
